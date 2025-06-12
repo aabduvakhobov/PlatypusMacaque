@@ -16,6 +16,11 @@ __Macaque__ is a novel time series compression method that includes 1) _MacaqueV
 
 
 ### Macaque on Elf
-We implemented Macaque in the [Elf benchmark suite]().
+We implemented Macaque in the [Elf benchmark suite](https://github.com/Spatio-Temporal-Lab/elf).
 
+
+## License
+The code is licensed under version 2.0 of the Apache License.
+
+This repository changes and is based on the following commit version of [ModelarDB](https://github.com/ModelarData/ModelarDB-RS/pull/287) which is released under version 2.0 of the Apache License.
 
