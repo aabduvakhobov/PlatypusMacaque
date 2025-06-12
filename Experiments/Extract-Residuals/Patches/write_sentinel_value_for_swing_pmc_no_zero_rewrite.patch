@@ -1,0 +1,72 @@
+diff --git a/crates/modelardb_compression/src/models/gorilla.rs b/crates/modelardb_compression/src/models/gorilla.rs
+index 6928dc2..f4419db 100644
+--- a/crates/modelardb_compression/src/models/gorilla.rs
++++ b/crates/modelardb_compression/src/models/gorilla.rs
+@@ -93,12 +93,12 @@ impl Gorilla {
+     /// Compress `value` using XOR and a variable length binary encoding and then store it.
+     fn compress_value_xor_last_value(&mut self, value: Value) {
+         // The best case for Gorilla is storing duplicate values.
+-        let value = if models::is_value_within_error_bound(self.error_bound, value, self.last_value)
+-        {
+-            self.last_value
+-        } else {
+-            value
+-        };
++        // let value = if models::is_value_within_error_bound(self.error_bound, value, self.last_value)
++        // {
++        //     self.last_value
++        // } else {
++        //     value
++        // };
+ 
+         let value_as_integer = value.to_bits();
+         let last_value_as_integer = self.last_value.to_bits();
+diff --git a/crates/modelardb_compression/src/models/mod.rs b/crates/modelardb_compression/src/models/mod.rs
+index bea940b..bb767a1 100644
+--- a/crates/modelardb_compression/src/models/mod.rs
++++ b/crates/modelardb_compression/src/models/mod.rs
+@@ -23,6 +23,7 @@ pub mod pmc_mean;
+ pub mod swing;
+ pub mod timestamps;
+ 
++use core::f32;
+ use std::mem;
+ 
+ use arrow::array::ArrayBuilder;
+@@ -317,6 +318,9 @@ pub fn grid(
+     timestamp_builder: &mut TimestampBuilder,
+     value_builder: &mut ValueBuilder,
+ ) {
++    let pmc_sentinel_value = f32::INFINITY;
++    let swing_sentinel_value = f32::NEG_INFINITY;
++    let before_size = value_builder.len();
+     // Decompress the timestamps.
+     let (model_timestamps, residuals_timestamps) =
+         decompress_all_timestamps_and_split_into_models_and_residuals(
+@@ -365,6 +369,7 @@ pub fn grid(
+         _ => panic!("Unknown model type."),
+     }
+ 
++    let after_size = value_builder.len();
+     // Reconstruct the values from the residuals.
+     if !residuals.is_empty() {
+         let model_last_value = value_builder.values_slice()[value_builder.len() - 1];
+@@ -378,6 +383,18 @@ pub fn grid(
+             Some(model_last_value),
+         );
+     }
++    //Overwrite value_builder with sentinel values
++    let value_builder_slice = value_builder.values_slice_mut();
++    if model_type_id == PMC_MEAN_ID {
++        for i in before_size..after_size {
++            value_builder_slice[i] = pmc_sentinel_value;
++        }
++    }
++    else if model_type_id == SWING_ID {
++        for i in before_size..after_size {
++            value_builder_slice[i] = swing_sentinel_value;
++        }
++    }
+ }
+ 
+ /// Decompress the timestamps stored as `start_time`, `end_time`, and `timestamps`, add them to
