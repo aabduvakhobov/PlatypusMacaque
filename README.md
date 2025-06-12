@@ -1,2 +1,21 @@
 # PlatypusMacaque
-Implementation and util scripts for ModelarDB's novel model fitting method Platypus and novel compression method Macaque 
+Implementation and util scripts for ModelarDB's novel model fitting method _Platypus_ and novel compression method _Macaque_. 
+
+__Platypus__ is a novel model fitting method for ModelarDB that improves [ModelarDB](https://github.com/ModelarData/ModelarDB-RS)'s compression by:
+1. Optimizing the use of 's more efficient model types;
+2. Removing the need to configure many other parameters other than the error bound. 
+
+__Macaque__ is a novel time series compression method that includes 1) _MacaqueV_ for error-bounded value compression; 2) _MacaqueTS_ for specialized compression of regular and irregular timestamps.
+
+## Prerequisites
+1. [Install](https://www.rust-lang.org/tools/install) Rust
+2. Clone ModelarDB [Utilities](https://github.com/ModelarData/Utilities)
+3. Create new virtual environment with [conda](https://www.anaconda.com/download/success) using the [requirements.txt](requirements.txt) file: `conda env create <my_env> --file requirements.txt`
+
+## Experiments
+
+
+### Macaque on Elf
+We implemented Macaque in the [Elf benchmark suite]().
+
+
