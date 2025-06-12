@@ -8,9 +8,8 @@ __Platypus__ is a novel model fitting method for ModelarDB that improves [Modela
 __Macaque__ is a novel time series compression method that includes 1) _MacaqueV_ for error-bounded value compression; 2) _MacaqueTS_ for specialized compression of regular and irregular timestamps.
 
 ## Prerequisites
-1. [Install](https://www.rust-lang.org/tools/install) Rust
-2. Clone ModelarDB [Utilities](https://github.com/ModelarData/Utilities)
-3. Create new virtual environment with [conda](https://www.anaconda.com/download/success) using the [requirements.txt](requirements.txt) file: `conda env create <my_env> --file requirements.txt`
+1. [Install Rust](https://www.rust-lang.org/tools/install)
+2. Create new virtual environment with [conda](https://www.anaconda.com/download/success) using the [requirements.txt](requirements.txt) file: `conda env create <my_env> --file requirements.txt`
 
 ## Experiments
 
