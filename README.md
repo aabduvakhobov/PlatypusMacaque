@@ -9,9 +9,15 @@ __Macaque__ is a novel time series compression method that includes 1) _MacaqueV
 
 ## Prerequisites
 1. [Install Rust](https://www.rust-lang.org/tools/install)
-2. Create new virtual environment with [conda](https://www.anaconda.com/download/success) using the [requirements.txt](requirements.txt) file: `conda env create <my_env> --file requirements.txt`
+2. Create new virtual environment with [conda](https://www.anaconda.com/download/success) using the [requirements.txt](requirements.txt) file: `conda env create <modelardb_env> --file requirements.txt`
 
 ## Experiments
+
+### 1. Extract Residuals
+The experiment code to extract residuals and store them as Parquet files. [Detailed instructions](Experiments/Extract-Residuals/README.md).
+
+### 2. Compute Value and Storage Distribution per Model Types
+The experiment code to compute the shares of: 1) compressed values; and 2) storage sizes per model type. [Detailed instructions](Experiments/Model-Types-Used/README.md).
 
 
 ### Macaque on Elf
