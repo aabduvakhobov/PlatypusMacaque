@@ -25,7 +25,8 @@ def get_files(path):
 if __name__ == "__main__":
     if len(sys.argv) != 5:
         print(f"Usage: {sys.argv[0]} dataset_name original_dataset_file eb save_path")
-    
+        sys.exit(0)
+
     dataset_name=sys.argv[1]
     original_data_path=sys.argv[2]
 

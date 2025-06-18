@@ -14,6 +14,7 @@ def get_safe_col_name(col_name):
 if __name__ == "__main__":
     if len(sys.argv) != 4:
         print(f"Usage: {sys.argv[0]} dataset_name eb save_path")
+        sys.exit(0)
     
     dataset_name=sys.argv[1]
     error_bound=float(sys.argv[2])

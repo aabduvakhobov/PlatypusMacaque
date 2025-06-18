@@ -16,7 +16,8 @@ def get_safe_col_name(col_name):
 if __name__ == "__main__":
     if len(sys.argv) != 4:
         print(f"Usage: {sys.argv[0]} path/to/logs dataset_name error_bound")
-    
+        sys.exit(1)
+
     dataset_name=sys.argv[1]
     original_data_path=sys.argv[2]
 

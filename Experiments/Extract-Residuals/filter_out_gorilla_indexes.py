@@ -16,7 +16,8 @@ def get_safe_col_name(col_name):
 if __name__ == "__main__":
     if len(sys.argv) != 5:
         print(f"Usage: {sys.argv[0]} original_dataset_path dataset eb save_path")
-    
+        sys.exit(0)
+        
     original_dataset_path=sys.argv[1]
     dataset=sys.argv[2]
     error=float(sys.argv[3])

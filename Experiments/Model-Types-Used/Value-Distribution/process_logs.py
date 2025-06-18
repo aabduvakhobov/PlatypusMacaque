@@ -27,7 +27,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 5:
         print(f"Usage: {sys.argv[0]} dataset_name logs_path error_bound save_path")
         sys.exit(0)
-    
+
     dataset_name=sys.argv[1]
     logs_path = sys.argv[2] 
     eb = sys.argv[3]

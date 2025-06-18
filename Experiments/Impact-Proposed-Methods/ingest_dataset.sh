@@ -16,6 +16,7 @@ ModelarDB_Data="~/modelardb_data"
 # modelardb_path=../ModelarDB-versions/ModelarDB-Gorilla
 modelardb_vanilla_path=../../ModelarDB-versions/ModelarDB
 modelardb_macaque_path=../../ModelarDB-versions/ModelarDB-Macaque
+modelardb_gorillav_path=../../ModelarDB-versions/ModelarDB-GorillaV
 
 decompression_test_script="../Evaluation-Entire-Datasets/decompression_test.py"
 parquet_ingestor="../../Utilities/ingest_parquet_to_modelardb.py"
@@ -80,7 +81,7 @@ main() {
 # stop_modelardb
 clean_modelar_data
 # start new round with modified modelardb
-for path in $modelardb_vanilla_path $modelardb_macaque_path; do
+for path in $modelardb_vanilla_path $modelardb_macaque_path $modelardb_gorillav_path; do
     echo "Starting: $path"
     main $path
 done
