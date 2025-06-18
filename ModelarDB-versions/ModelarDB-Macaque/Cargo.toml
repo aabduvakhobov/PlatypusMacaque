@@ -1,0 +1,57 @@
+# Copyright 2021 The ModelarDB Contributors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+[workspace]
+members = ["crates/*"]
+resolver = "2"
+
+[workspace.dependencies]
+arrow = "53.3.0"
+arrow-flight = "53.3.0"
+async-trait = "0.1.83"
+bytes = "1.9.0"
+crossbeam-channel = "0.5.14"
+crossbeam-queue = "0.3.12"
+dashmap = "6.0.1"
+datafusion = "44.0.0"
+deltalake = { git = "https://github.com/aabduvakhobov/delta-rs", rev = "1c5924931ba105305b0bae86795b639de43f9be3" }
+dirs = "6.0.0"
+futures = "0.3.31"
+log = "0.4.25"
+object_store = "0.11.2"
+proptest = "1.6.0"
+rand = "0.8.5"
+rustyline = "15.0.0"
+snmalloc-rs = "0.3.7"
+sqlparser = "0.53.0"
+sysinfo = "0.33.1"
+tempfile = "3.15.0"
+tokio = "1.43.0"
+tokio-stream = "0.1.17"
+tonic = "0.12.3"
+tracing = "0.1.41"
+tracing-subscriber = "0.3.19"
+url = "2.5.4"
+uuid = "1.12.1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev-release]
+inherits = "release"
+lto = false
+codegen-units = 16
+panic = 'unwind'
