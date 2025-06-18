@@ -1,0 +1,5 @@
+# Name                    Version
+duckdb=1.2.1
+pandas=2.2.3
+psycopg2=2.9.10
+pyarrow=11.0.0
