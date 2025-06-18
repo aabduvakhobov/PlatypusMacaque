@@ -16,7 +16,7 @@ __MacaqueTS's code__ is implemented in all shared ModelarDB [versions](./Modelar
 
 ## Prerequisites
 1. [Install Rust](https://www.rust-lang.org/tools/install)
-2. Create new virtual environment with [conda](https://www.anaconda.com/download/success) using the [requirements.txt](requirements.txt) file: `conda env create <modelardb_env> --file requirements.txt`
+2. Create new virtual environment with [conda](https://www.anaconda.com/download/success) using the [requirements.yml](requirements.yml) file: `conda create -n "you_env" --file requirements.yml`
 
 ## Experiments
 
@@ -25,6 +25,15 @@ The experiment code to extract residuals and store them as Parquet files. [Detai
 
 ### 2. Compute Value and Storage Distribution per Model Types
 The experiment code to compute the shares of: 1) compressed values; and 2) storage sizes per model type. [Detailed instructions](Experiments/Model-Types-Used/README.md).
+
+### 3. Impact Proposed Methods
+Experiment runs different implementations of ModelarDB to check the impact of proposed methods.
+1. Activate your conda environment.
+2. Run [ingest_dataset.sh](./Experiments/Impact-Proposed-Methods/ingest_dataset.sh)
+3. Run [process_impact_optimizations_logs.py](./Experiments/Impact-Proposed-Methods/process_impact_optimizations_logs.py)
+
+### 4. Evaluate the Other Solutions
+Experiment to check storage use of state-of-the-art systems Apache IoTDB and TimescaleDB and state-of-practice Apache Parquet format. Detailed instructions for each solution is given [here](Experiments/Other-Systems-Comparison-Public-Datasets/README.md)
 
 
 ## License
