@@ -1,4 +1,10 @@
-# ModelarDB
+# ModelarDB<sub>LA</sub>
+ModelarDB's implementation using Platypus for multi-model fitting and ALP (GorillaV as its fallback) for residuals.
+
+The rest of the documentation is the same as ModelarDB's following [commit version](https://github.com/ModelarData/ModelarDB-RS/pull/287).
+
+ALP's integration can be found in [alp.rs](./crates/modelardb_compression/src/models/alp.rs) and its use in [compression.rs](./crates/modelardb_compression/src/compression.rs).
+
 :warning: **The current version of ModelarDB is alpha software and not yet ready for production use.**
 
 [![Cargo Build, Lint, and Test](https://github.com/ModelarData/ModelarDB-RS/actions/workflows/cargo-build-lint-and-test.yml/badge.svg)](https://github.com/ModelarData/ModelarDB-RS/actions/workflows/cargo-build-lint-and-test.yml)

@@ -1,4 +1,5 @@
-This directory stores ModelarDB with implementations for different methods like ALP, GorillaTS and Macaque
+This directory stores ModelarDB with implementations for different methods like ALP, GorillaTS and Macaque.
+All ModelarDB versions use Platypus for multi-model fitting.
 
 ## License
 The code is licensed under version 2.0 of the Apache License.

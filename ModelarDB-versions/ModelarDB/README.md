@@ -1,4 +1,9 @@
 # ModelarDB
+
+ModelarDB's implementation using Platypus for multi-model fitting and GorillaV for residuals.
+
+The rest of the documentation is the same as ModelarDB's following [commit version](https://github.com/ModelarData/ModelarDB-RS/pull/287)
+
 :warning: **The current version of ModelarDB is alpha software and not yet ready for production use.**
 
 [![Cargo Build, Lint, and Test](https://github.com/ModelarData/ModelarDB-RS/actions/workflows/cargo-build-lint-and-test.yml/badge.svg)](https://github.com/ModelarData/ModelarDB-RS/actions/workflows/cargo-build-lint-and-test.yml)

@@ -1,10 +1,7 @@
-# ModelarDB-GorillaTS
-ModelarDB's implementation using Platypus for multi-model fitting and GorillaTS with for timestamps compression.
+# ModelarDB-GorillaV
+ModelarDB's implementation using Platypus for multi-model fitting and GorillaV with value pre-processing methods for residuals.
 
 The rest of the documentation is the same as ModelarDB's following [commit version](https://github.com/ModelarData/ModelarDB-RS/pull/287)
-
-GorillaTS's implementation can be found in [timestamp.rs](./crates/modelardb_compression/src/models/timestamps.rs).
-
 
 :warning: **The current version of ModelarDB is alpha software and not yet ready for production use.**
 
