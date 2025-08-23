@@ -1,0 +1,50 @@
+diff --git a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
+index 62c7906..989e8ff 100644
+--- a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
++++ b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
+@@ -80,7 +80,7 @@ pub fn try_compress(
+ 
+         // The model will only be stored as part of a compressed segment if it uses less storage
+         // space per value than the uncompressed values it represents.
+-        if model.bytes_per_value <= models::VALUE_SIZE_IN_BYTES as f32 {
++        // if model.bytes_per_value <= models::VALUE_SIZE_IN_BYTES as f32 {
+             // Flush the previous model and any residual value if either exists.
+             if current_start_index > 0 {
+                 store_compressed_segments_with_model_and_or_residuals(
+@@ -101,11 +101,11 @@ pub fn try_compress(
+             // few residual values that may exist between them can be stored as part of the segment
+             // with previous_model instead of as a separate segment.
+             previous_model = Some(model);
+-        } else {
+-            // The potentially lossy models could not efficiently encode the sub-sequence starting
+-            // at current_start_index, so residual values will instead be compressed using Gorilla.
+-            current_start_index += 1;
+-        }
++        // } else {
++        //     // The potentially lossy models could not efficiently encode the sub-sequence starting
++        //     // at current_start_index, so residual values will instead be compressed using Gorilla.
++        //     current_start_index += 1;
++        // }
+     }
+ 
+     store_compressed_segments_with_model_and_or_residuals(
+diff --git a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/types.rs b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/types.rs
+index 46a26c3..adfd95d 100644
+--- a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/types.rs
++++ b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/types.rs
+@@ -72,10 +72,11 @@ impl ModelBuilder {
+     pub(crate) fn try_to_update_models(&mut self, timestamp: Timestamp, value: Value) -> bool {
+         self.pmc_mean_could_fit_all = self.pmc_mean_could_fit_all && self.pmc_mean.fit_value(value);
+ 
+-        self.swing_could_fit_all =
+-            self.swing_could_fit_all && self.swing.fit_data_point(timestamp, value);
+-
+-        self.pmc_mean_could_fit_all || self.swing_could_fit_all
++        // self.swing_could_fit_all =
++            // self.swing_could_fit_all && self.swing.fit_data_point(timestamp, value);
++        
++        // self.pmc_mean_could_fit_all || self.swing_could_fit_all
++        self.pmc_mean_could_fit_all
+     }
+ 
+     /// Return the model that requires the fewest number of bytes per value.
