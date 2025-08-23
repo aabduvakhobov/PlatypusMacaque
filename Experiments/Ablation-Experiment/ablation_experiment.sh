@@ -2,9 +2,9 @@
 
 set -e
 
-ModelarDB_vanilla_path="ModelarDB"
+ModelarDB_vanilla_path="../../ModelarDB-versions/ModelarDB-GorillaV/"
 # Where ModelarDB stores data
-ModelarDB_Data="data/"
+ModelarDB_Data="../../ModelarDB-versions/data/"
 
 # TODO: confirm that path to ModelarDB Utilities is correct
 ingestion_script="~/Utilities/Apache-Parquet-Loader/main.py"
@@ -18,10 +18,10 @@ port="127.0.0.1:9999"
 # time to sleep for vacuum
 sleep_for_vacuum=5
 
-pmc_only_patch=""
-swing_only_patch=""
-pmc_and_swing_only_patch=""
-gorilla_only_path=""
+pmc_only_patch="../../Experiments/Ablation-Experiment/pmc_only.patch"
+swing_only_patch="../../Experiments/Ablation-Experiment/swing_only.patch"
+pmc_and_swing_only_patch="../../Experiments/Ablation-Experiment/pmc_and_swing_only.patch"
+gorilla_only_patch="../../Experiments/Ablation-Experiment/gorilla_only.patch"
 
 if [ $# -ne 2 ]; 
 then
@@ -52,29 +52,32 @@ stop_modelardb() {
 }
 
 compress_error_bounds() {
-    for patch in $pmc_only_patch; do
+    for patch in $pmc_only_patch $pmc_and_swing_only_patch $swing_only_patch $gorilla_only_patch; do
         cd $ModelarDB_vanilla_path
+        git restore .
         git apply $patch
+        patch_name=$(basename -s .patch "$patch")
+        echo "Patch name is: $patch_name"
         for error_bound in $error_bounds; do
             # Ensure release build is done
-            cargo build --release --manifest-path $1/Cargo.toml
-            start_modelardb $1/target/release/modelardbd
-            results_file=$error_bound-$table_name-$1-compression_results.log
+            # cargo build --release --manifest-path $1/Cargo.toml
+            # start_modelardb $1/target/release/modelardbd
+            results_file=$patch_name-$error_bound-$table_name-compression_results.log
             # timing ingestion process
             start=$SECONDS
-            python3 $ingestion_script "127.0.0.1:9999" $table_name $data_dir $error_bound
+            # python3 $ingestion_script "127.0.0.1:9999" $table_name $data_dir $error_bound
             # sleep for a minute or two to finish vacuuming
             duration=$((SECONDS-start))
             # write results of the python program logs to the common file
-            sleep $sleep_for_vacuum
+            # sleep $sleep_for_vacuum
             echo "Compressed in $duration seconds" > $results_file
             compression_size=$(du -h -d0 $ModelarDB_Data)
             echo "Compression size: $compression_size" >> $results_file
             # stop ModelarDB
-            stop_modelardb
-            sleep $sleep_for_vacuum
+            # stop_modelardb
+            # sleep $sleep_for_vacuum
             # We remove old data after each ingestion
-            clean_modelar_data
+            # clean_modelar_data
         done
     done
 }
@@ -86,4 +89,6 @@ clean_modelar_data
 # start new round with modified modelardb
 for path in $ModelarDB_vanilla_path; do
     echo "Starting: $path"
+    # compress_error_bounds $path
     compress_error_bounds $path
+done
