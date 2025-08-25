@@ -2,7 +2,7 @@
 
 set -e
 
-ModelarDB_vanilla_path="../../ModelarDB-versions/ModelarDB/"
+ModelarDB_PATH="../../ModelarDB-versions/ModelarDB/"
 # Where ModelarDB stores data
 ModelarDB_Data="../../ModelarDB-versions/data/"
 
@@ -51,7 +51,7 @@ stop_modelardb() {
 compress_error_bounds() {
     for batch_size in $batch_sizes; do
         echo "batch_size is: $batch_size"
-        sed -E -i "s/set_max_row_group_size\([0-9]+\)/set_max_row_group_size($batch_size)/" crates/modelardb_storage/src/lib.rs
+        sed -E -i "61s/[0-9]+ \* 1024/16 * 1024/" $ModelarDB_PATH/crates/modelardb_server/src/storage/mod.rs
         # Ensure release build is done
         cargo build --release --manifest-path $1/Cargo.toml
         for error_bound in $error_bounds; do
@@ -81,7 +81,7 @@ compress_error_bounds() {
 # Main function
 clean_modelar_data
 # start new round with modified modelardb
-for path in $ModelarDB_vanilla_path; do
+for path in $ModelarDB_PATH; do
     echo "Starting: $path"
     # compress_error_bounds $path
     compress_error_bounds $path

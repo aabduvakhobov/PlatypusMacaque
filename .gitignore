@@ -194,3 +194,14 @@ cython_debug/
 .cursorindexingignore
 target/*
 ModelarDB-versions/data/
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata/system.sql
+.gitignore
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata/system
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata/INFORMATION_SCHEMA.sql
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata/default.sql
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/preprocessed_configs/config.xml
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/uuid
+.gitignore
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata_dropped/turbinelog.turbinelog.a3bb1cf3-96cf-4562-b3ed-779df69ef76f.sql
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata/information_schema.sql
+Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/test.ipynb
