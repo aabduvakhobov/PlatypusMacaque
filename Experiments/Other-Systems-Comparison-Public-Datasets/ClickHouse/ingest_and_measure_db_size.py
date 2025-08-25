@@ -5,6 +5,7 @@ import logging
 import time
 
 import pyarrow as pa
+import pyarrow.compute as pc
 import pyarrow.parquet as parquet
 import clickhouse_connect
 
@@ -67,7 +68,10 @@ def arrow_schema_to_clickhouse(schema: pa.Schema, table_name: str, primary_key: 
     """Generate ClickHouse CREATE TABLE DDL from PyArrow schema."""
     cols = []
     for field in schema:
-        ch_type = arrow_type_to_clickhouse(field.type)
+        if table_name == 'turbinelog' and field.type == pa.string():
+            ch_type = 'Int32'
+        else:
+            ch_type = arrow_type_to_clickhouse(field.type)
         # Handle nullable fields
         if field.nullable:
             ch_type = f"{ch_type}"
@@ -147,6 +151,29 @@ def parse_size(size_str: str) -> int:
     return int(number * multipliers[unit])
 
 
+def change_turbinelog_schema(table: pa.Table, to_type: pa.DataType = pa.int32()) -> pa.Table:
+    """
+    Cast all string columns in a PyArrow table to integers, keep others unchanged.
+
+    Args:
+        table (pa.Table): Input PyArrow table
+        to_type (pa.DataType): Target integer type (default Int64)
+
+    Returns:
+        pa.Table: New table with string columns cast to integers
+    """
+    new_columns = []
+    for field in table.schema:
+        col = table[field.name]
+        if pa.types.is_string(field.type):
+            # cast string → int
+            new_col = pc.cast(col, to_type)
+        else:
+            new_col = col
+        new_columns.append(new_col)
+
+    return pa.table(new_columns, names=table.column_names)
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
@@ -157,9 +184,12 @@ if __name__ == '__main__':
     
     logging.basicConfig(filename='ingestion.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
     
-    table = parquet.read_table(files[0])
     client = clickhouse_connect.get_client(host='localhost', username='default')
     db_table_name = sys.argv[1]
+    if db_table_name == 'turbinelog':
+        table = change_turbinelog_schema(parquet.read_table(files[0]))
+    else: 
+        table = parquet.read_table(files[0])
     # Create DB
     client.command(create_clickhouse_database(db_table_name, None)) 
     client.close()
@@ -169,10 +199,11 @@ if __name__ == '__main__':
     # Create table
     client.command(arrow_schema_to_clickhouse(table.schema,db_table_name, timestamp_col))
     total_ingestion_time = 0
+    # Insert pyarrow tables
     for file in files:
+        table = change_turbinelog_schema(parquet.read_table(file)) if db_table_name == 'turbinelog' else parquet.read_table(file)
         tic = time.perf_counter()
-        # Insert data
-        client.insert_arrow(db_table_name, parquet.read_table(file), db_table_name)       
+        client.insert_arrow(db_table_name, table, db_table_name)       
         total_ingestion_time += time.perf_counter() - tic
     logging.info(f"Ingestion finished in:{total_ingestion_time:0.4f} seconds")
     db_size_str = client.command(CHECK_DB_SIZE_QUERY.format(db_table_name))
@@ -181,5 +212,5 @@ if __name__ == '__main__':
     print(db_size_str)
     print(f"In bytes: {parse_size(db_size_str)}")
     # Drop table
-    client.command(DROP_DB_QUERY.format(db_table_name))
+    #client.command(DROP_DB_QUERY.format(db_table_name))
     client.close()
