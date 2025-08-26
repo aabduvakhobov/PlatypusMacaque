@@ -4,10 +4,10 @@ set -e
 
 ModelarDB_PATH="../../ModelarDB-versions/ModelarDB/"
 # Where ModelarDB stores data
-ModelarDB_Data="../../ModelarDB-versions/data/"
+ModelarDB_Data="/srv/data4/abduvoris/modelardb_data/"
 
 # TODO: confirm that path to ModelarDB Utilities is correct
-ingestion_script="~/Utilities/Apache-Parquet-Loader/main.py"
+ingestion_script="../../Utilities/ingest_parquet_to_modelardb.py"
 output_dir=$(pwd)
 
 table_name=$1
@@ -18,7 +18,7 @@ port="127.0.0.1:9999"
 # time to sleep for vacuum
 sleep_for_vacuum=5
 
-batch_sizes="8192 16384 32768 65536 131072"
+batch_sizes="8 32 64 128"
 
 if [ $# -ne 2 ]; 
 then
@@ -51,7 +51,7 @@ stop_modelardb() {
 compress_error_bounds() {
     for batch_size in $batch_sizes; do
         echo "batch_size is: $batch_size"
-        sed -E -i "61s/[0-9]+ \* 1024/16 * 1024/" $ModelarDB_PATH/crates/modelardb_server/src/storage/mod.rs
+        sed -E -i "61s/[0-9]+ \* 1024/$batch_size * 1024/" $ModelarDB_PATH/crates/modelardb_server/src/storage/mod.rs
         # Ensure release build is done
         cargo build --release --manifest-path $1/Cargo.toml
         for error_bound in $error_bounds; do
