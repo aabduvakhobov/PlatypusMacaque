@@ -205,3 +205,4 @@ Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/uuid
 Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata_dropped/turbinelog.turbinelog.a3bb1cf3-96cf-4562-b3ed-779df69ef76f.sql
 Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata/information_schema.sql
 Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/test.ipynb
+Experiments/Batch-Size/memory_tracing_csv
