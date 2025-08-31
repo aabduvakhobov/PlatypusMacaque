@@ -19,10 +19,10 @@ def get_log_files(path):
 def main(files):
     rows = []
     for file in files:        
-        # Example: pmc_and_swing_only-1-powerlog-compression_results.log
-        match = file.split("-")
+        # Example: pmc_and_swinig_only-1-powerlog-compression_results.log
+        match = file.split("/")[-1].split("-")
         
-        compression_name = match[0].split('/')[-1].replace("_only", '')    # e.g., "pmc_and_swing"
+        compression_name = match[0].replace("_only", '')    # e.g., "pmc_and_swing"
         number = float(match[1])            # e.g., 1
         dataset = match[2]               # e.g., "powerlog"
         
@@ -52,7 +52,7 @@ def main(files):
     return 0
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print(f"Usage: {sys.argv[0]} path/to/logs dataset_name[powerlog or turbinelog]")
         sys.exit(1)
     files = get_log_files(sys.argv[1])

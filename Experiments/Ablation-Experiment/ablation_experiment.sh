@@ -54,9 +54,9 @@ stop_modelardb() {
 }
 
 compress_error_bounds() {
-    for patch in $pmc_only_patch $swing_only_patch $pmc_and_swing_only_path $gorilla_only_patch; do
-        #git restore .
-        #git apply $patch
+    for patch in $pmc_and_swing_only_patch $gorilla_only_patch; do
+        git restore .
+        git apply $patch
         patch_name=$(basename -s .patch "$patch")
         echo "Patch name is: $patch_name"
         for error_bound in $error_bounds; do

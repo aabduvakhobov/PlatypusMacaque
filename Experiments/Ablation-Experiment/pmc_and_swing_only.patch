@@ -1,7 +1,7 @@
-diff --git a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
+diff --git a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
 index 62c7906..989e8ff 100644
---- a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
-+++ b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
+--- a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
++++ b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
 @@ -80,7 +80,7 @@ pub fn try_compress(
  
          // The model will only be stored as part of a compressed segment if it uses less storage

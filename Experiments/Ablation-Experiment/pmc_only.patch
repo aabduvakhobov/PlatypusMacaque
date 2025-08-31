@@ -1,7 +1,7 @@
-diff --git a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
+diff --git a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
 index 62c7906..989e8ff 100644
---- a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
-+++ b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/compression.rs
+--- a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
++++ b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
 @@ -80,7 +80,7 @@ pub fn try_compress(
  
          // The model will only be stored as part of a compressed segment if it uses less storage
@@ -28,22 +28,20 @@ index 62c7906..989e8ff 100644
      }
  
      store_compressed_segments_with_model_and_or_residuals(
-diff --git a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/types.rs b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/types.rs
-index 46a26c3..adfd95d 100644
---- a/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/types.rs
-+++ b/ModelarDB-versions/ModelarDB-GorillaV/crates/modelardb_compression/src/types.rs
-@@ -72,10 +72,11 @@ impl ModelBuilder {
+diff --git a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/types.rs b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/types.rs
+index 46a26c3..bac29f3 100644
+--- a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/types.rs
++++ b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/types.rs
+@@ -72,10 +72,10 @@ impl ModelBuilder {
      pub(crate) fn try_to_update_models(&mut self, timestamp: Timestamp, value: Value) -> bool {
          self.pmc_mean_could_fit_all = self.pmc_mean_could_fit_all && self.pmc_mean.fit_value(value);
  
 -        self.swing_could_fit_all =
 -            self.swing_could_fit_all && self.swing.fit_data_point(timestamp, value);
--
--        self.pmc_mean_could_fit_all || self.swing_could_fit_all
 +        // self.swing_could_fit_all =
 +            // self.swing_could_fit_all && self.swing.fit_data_point(timestamp, value);
-+        
-+        // self.pmc_mean_could_fit_all || self.swing_could_fit_all
+ 
+-        self.pmc_mean_could_fit_all || self.swing_could_fit_all
 +        self.pmc_mean_could_fit_all
      }
  
