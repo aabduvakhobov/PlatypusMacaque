@@ -3,6 +3,7 @@
 set -e
 
 ModelarDB_vanilla_path="../../ModelarDB-versions/ModelarDB/"
+ModelarDB_macaque_path="../../ModelarDB-versions/ModelarDB-Macaque/"
 # Where ModelarDB stores data
 ModelarDB_Data="/srv/data4/abduvoris/modelardb_data/"
 
@@ -54,7 +55,7 @@ stop_modelardb() {
 }
 
 compress_error_bounds() {
-    for patch in $pmc_and_swing_only_patch $gorilla_only_patch; do
+    for patch in $gorilla_only_patch; do
         git restore .
         git apply $patch
         patch_name=$(basename -s .patch "$patch")

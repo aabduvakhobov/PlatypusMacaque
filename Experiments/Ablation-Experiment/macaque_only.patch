@@ -1,0 +1,31 @@
+diff --git a/ModelarDB-versions/ModelarDB-Macaque/crates/modelardb_compression/src/compression.rs b/ModelarDB-versions/ModelarDB-Macaque/crates/modelardb_compression/src/compression.rs
+index 62c7906..2ce1e01 100644
+--- a/ModelarDB-versions/ModelarDB-Macaque/crates/modelardb_compression/src/compression.rs
++++ b/ModelarDB-versions/ModelarDB-Macaque/crates/modelardb_compression/src/compression.rs
+@@ -71,16 +71,17 @@ pub fn try_compress(
+     while current_start_index < end_index {
+         // Select a model to represent the values from current_start_index to index within
+         // error_bound where index < end_index.
+-        let model = fit_next_model(
+-            current_start_index,
+-            error_bound,
+-            uncompressed_timestamps,
+-            uncompressed_values,
+-        );
+-
+-        // The model will only be stored as part of a compressed segment if it uses less storage
++        // let model = fit_next_model(
++        //     current_start_index,
++        //     error_bound,
++        //     uncompressed_timestamps,
++        //     uncompressed_values,
++        // );
++        let model = ModelBuilder::new(current_start_index, error_bound).finish();
++
++        // model.bytes_per_value <= models::VALUE_SIZE_IN_BYTES as f32The model will only be stored as part of a compressed segment if it uses less storage
+         // space per value than the uncompressed values it represents.
+-        if model.bytes_per_value <= models::VALUE_SIZE_IN_BYTES as f32 {
++        if false {
+             // Flush the previous model and any residual value if either exists.
+             if current_start_index > 0 {
+                 store_compressed_segments_with_model_and_or_residuals(

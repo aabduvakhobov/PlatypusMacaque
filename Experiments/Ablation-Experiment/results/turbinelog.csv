@@ -1,6 +1,10 @@
 compression_name,number,dataset,compression_size,compressed_time
-gorilla,0.0,turbinelog,8.1G,219375.0
-gorilla,0.01,turbinelog,8.1G,324067.0
+gorilla,0.0,turbinelog,8.1G,552.0
+gorilla,0.01,turbinelog,8.1G,558.0
+gorilla,0.1,turbinelog,8.1G,573.0
+gorilla,1.0,turbinelog,8.1G,554.0
+gorilla,10.0,turbinelog,8.1G,551.0
+gorilla,5.0,turbinelog,8.1G,557.0
 pmc_and_swing,0.0,turbinelog,30G,1305.0
 pmc_and_swing,0.01,turbinelog,26G,1200.0
 pmc_and_swing,0.1,turbinelog,18G,956.0

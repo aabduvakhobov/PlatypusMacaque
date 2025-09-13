@@ -1,8 +1,42 @@
+diff --git a/Experiments/Ablation-Experiment/gorilla_only.patch b/Experiments/Ablation-Experiment/gorilla_only.patch
+index 65246fe..e69de29 100644
+--- a/Experiments/Ablation-Experiment/gorilla_only.patch
++++ b/Experiments/Ablation-Experiment/gorilla_only.patch
+@@ -1,13 +0,0 @@
+-diff --git a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
+-index 62c7906..8c9a473 100644
+---- a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
+-+++ b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
+-@@ -80,7 +80,7 @@ pub fn try_compress(
+- 
+-         // The model will only be stored as part of a compressed segment if it uses less storage
+-         // space per value than the uncompressed values it represents.
+--        if model.bytes_per_value <= models::VALUE_SIZE_IN_BYTES as f32 {
+-+        if false {
+-             // Flush the previous model and any residual value if either exists.
+-             if current_start_index > 0 {
+-                 store_compressed_segments_with_model_and_or_residuals(
 diff --git a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
-index 62c7906..8c9a473 100644
+index 62c7906..7fb2112 100644
 --- a/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
 +++ b/ModelarDB-versions/ModelarDB/crates/modelardb_compression/src/compression.rs
-@@ -80,7 +80,7 @@ pub fn try_compress(
+@@ -71,16 +71,17 @@ pub fn try_compress(
+     while current_start_index < end_index {
+         // Select a model to represent the values from current_start_index to index within
+         // error_bound where index < end_index.
+-        let model = fit_next_model(
+-            current_start_index,
+-            error_bound,
+-            uncompressed_timestamps,
+-            uncompressed_values,
+-        );
++        // let model = fit_next_model(
++        //     current_start_index,
++        //     error_bound,
++        //     uncompressed_timestamps,
++        //     uncompressed_values,
++        // );
++        let model = ModelBuilder::new(current_start_index, error_bound).finish();
  
          // The model will only be stored as part of a compressed segment if it uses less storage
          // space per value than the uncompressed values it represents.
