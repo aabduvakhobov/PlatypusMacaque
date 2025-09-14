@@ -56,5 +56,6 @@ if __name__ == "__main__":
         print(f"Usage: {sys.argv[0]} path/to/logs dataset_name[powerlog or turbinelog]")
         sys.exit(1)
     files = get_log_files(sys.argv[1])
-    # files = [f for f in files if dataset_name in f]
+    dataset_name = sys.argv[2]
+    files = [f for f in files if dataset_name in f]
     main(files)

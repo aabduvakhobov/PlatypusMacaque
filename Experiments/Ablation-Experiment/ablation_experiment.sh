@@ -25,6 +25,7 @@ pmc_only_patch="../../Experiments/Ablation-Experiment/pmc_only.patch"
 swing_only_patch="../../Experiments/Ablation-Experiment/swing_only.patch"
 pmc_and_swing_only_patch="../../Experiments/Ablation-Experiment/pmc_and_swing_only.patch"
 gorilla_only_patch="../../Experiments/Ablation-Experiment/gorilla_only.patch"
+macaque_only_patch="../../Experiments/Ablation-Experiment/macaque_only.patch"
 
 if [ $# -ne 2 ]; 
 then
@@ -55,7 +56,7 @@ stop_modelardb() {
 }
 
 compress_error_bounds() {
-    for patch in $gorilla_only_patch; do
+    for patch in $macaque_only_patch; do
         git restore .
         git apply $patch
         patch_name=$(basename -s .patch "$patch")
@@ -89,8 +90,8 @@ compress_error_bounds() {
 # Main function
 clean_modelar_data
 # start new round with modified modelardb
-cd $ModelarDB_vanilla_path
-for path in $ModelarDB_vanilla_path; do
+cd $ModelarDB_macaque_path
+for path in $ModelarDB_macaque_path; do
     echo "Starting: $path"
     # compress_error_bounds $path
     compress_error_bounds $path

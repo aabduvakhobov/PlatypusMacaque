@@ -1,6 +1,12 @@
 compression_name,number,dataset,compression_size,compressed_time
 gorilla,0.0,powerlog,6.1G,2124.0
 gorilla,0.01,powerlog,6.1G,3119.0
+macaque,0.0,powerlog,5.7G,99.0
+macaque,0.01,powerlog,2.6G,140.0
+macaque,0.1,powerlog,1.5G,118.0
+macaque,1.0,powerlog,792M,97.0
+macaque,10.0,powerlog,452M,90.0
+macaque,5.0,powerlog,535M,91.0
 pmc_and_swing,0.0,powerlog,11G,306.0
 pmc_and_swing,0.01,powerlog,8.0G,240.0
 pmc_and_swing,0.1,powerlog,4.9G,193.0

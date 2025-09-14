@@ -5,6 +5,12 @@ gorilla,0.1,turbinelog,8.1G,573.0
 gorilla,1.0,turbinelog,8.1G,554.0
 gorilla,10.0,turbinelog,8.1G,551.0
 gorilla,5.0,turbinelog,8.1G,557.0
+macaque,0.0,turbinelog,7.4G,552.0
+macaque,0.01,turbinelog,5.7G,579.0
+macaque,0.1,turbinelog,4.0G,570.0
+macaque,1.0,turbinelog,2.2G,541.0
+macaque,10.0,turbinelog,812M,546.0
+macaque,5.0,turbinelog,1.1G,539.0
 pmc_and_swing,0.0,turbinelog,30G,1305.0
 pmc_and_swing,0.01,turbinelog,26G,1200.0
 pmc_and_swing,0.1,turbinelog,18G,956.0
