@@ -1,0 +1,8 @@
+[2m2025-09-17T01:52:59.179383Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Starting Apache Arrow Flight on 0.0.0.0:9999.
+[2m2025-09-17T01:52:59.751148Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received SQL: 'CREATE MODEL TABLE powerlog (`TimeStamp` TIMESTAMP, `Frequency` FIELD(0.1%), `ActivePower` FIELD(0.1%), `ActivePower60` FIELD(0.1%), `ActivePower600` FIELD(0.1%), `RawReactivePower` FIELD(0.1%), `RawPower` FIELD(0.1%), `PowerError` FIELD(0.1%), `PowerUpperLimit` FIELD(0.1%), `PowerLowerLimit` FIELD(0.1%), `AvailablePower` FIELD(0.1%))'.
+[2m2025-09-17T01:52:59.751468Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Executing SQL: 'CREATE MODEL TABLE powerlog (`TimeStamp` TIMESTAMP, `Frequency` FIELD(0.1%), `ActivePower` FIELD(0.1%), `ActivePower60` FIELD(0.1%), `ActivePower600` FIELD(0.1%), `RawReactivePower` FIELD(0.1%), `RawPower` FIELD(0.1%), `PowerError` FIELD(0.1%), `PowerUpperLimit` FIELD(0.1%), `PowerLowerLimit` FIELD(0.1%), `AvailablePower` FIELD(0.1%))'.
+[2m2025-09-17T01:52:59.753799Z[0m [32m INFO[0m [2mmodelardbd::context[0m[2m:[0m Registered model table 'powerlog'.
+[2m2025-09-17T01:52:59.778586Z[0m [32m INFO[0m [2mmodelardbd::context[0m[2m:[0m Created model table 'powerlog'.
+[2m2025-09-17T01:53:05.769498Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:53:14.923747Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:53:22.445027Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.

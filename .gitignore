@@ -203,3 +203,4 @@ Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata_dropped
 Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/metadata/information_schema.sql
 Experiments/Other-Systems-Comparison-Public-Datasets/ClickHouse/test.ipynb
 Experiments/Batch-Size/memory_tracing_csv
+.vscode/

@@ -5,14 +5,14 @@ set -e
 ModelarDB_vanilla_path="../../ModelarDB-versions/ModelarDB/"
 ModelarDB_macaque_path="../../ModelarDB-versions/ModelarDB-Macaque/"
 # Where ModelarDB stores data
-ModelarDB_Data="/srv/data4/abduvoris/modelardb_data/"
 
-analysis_script="../../Utilities/compute_storage_insights.py"
+storage_insights_analysis_script="../../Utilities/compute_storage_insights.py"
 ingestion_script="../../Utilities/ingest_parquet_to_modelardb.py"
 output_dir=$(pwd)
 
 table_name=$1
 data_dir=$2
+ModelarDB_Data=$3
 
 error_bounds="0 0.01 0.1 1 5 10"
 #error_bounds="0 0.01 0.1"
@@ -27,15 +27,15 @@ pmc_and_swing_only_patch="../../Experiments/Ablation-Experiment/pmc_and_swing_on
 gorilla_only_patch="../../Experiments/Ablation-Experiment/gorilla_only.patch"
 macaque_only_patch="../../Experiments/Ablation-Experiment/macaque_only.patch"
 
-if [ $# -ne 2 ]; 
+if [ $# -ne 3 ]; 
 then
-    echo "Usage: script.sh dataset_name /path/to/parquet_files"
+    echo "Usage: script.sh dataset_name /path/to/parquet_files /path/to/modelardb_data_store"
     exit 0
 fi
 
 if ! [ -d $data_dir ]
 then
-    echo "Usage: script.sh dataset_name /path/to/parquet_files"
+    echo "Usage: script.sh dataset_name /path/to/parquet_files /path/to/modelardb_data_store"
     exit 0
 fi
 
@@ -56,7 +56,7 @@ stop_modelardb() {
 }
 
 compress_error_bounds() {
-    for coefficient in 2 4 8 16; do
+    for coefficient in 8 16; do
         echo "Coefficient is: $coefficient"
         # Change coefficient 
         sed -E -i "83s/models::VALUE_SIZE_IN_BYTES as f32/models::VALUE_SIZE_IN_BYTES as f32 \/ $coefficient.0/" $1/crates/modelardb_compression/src/compression.rs
@@ -76,7 +76,7 @@ compress_error_bounds() {
             compression_size=$(du -h -d0 $ModelarDB_Data)
             echo "Compression size: $compression_size" >> $results_file
             # run storage insights
-            python3 $analysis_script "$ModelarDB_Data" "$table_name" "$coefficient-$error_bound-$table_name.db" 
+            python3 $storage_insights_analysis_script "$ModelarDB_Data" "$table_name" "$coefficient-$error_bound-$table_name.db" 
             # stop ModelarDB
             stop_modelardb
             sleep $sleep_for_vacuum
