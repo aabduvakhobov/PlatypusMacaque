@@ -6,3 +6,40 @@
 [2m2025-09-17T01:53:05.769498Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
 [2m2025-09-17T01:53:14.923747Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
 [2m2025-09-17T01:53:22.445027Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:53:29.773415Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:53:39.326983Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:53:46.564671Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:53:55.291881Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:54:02.706755Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:54:11.766870Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:54:19.373478Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:54:31.433728Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:54:48.105202Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:54:59.589701Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:55:06.998694Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:55:17.603422Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:55:27.497347Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:55:40.413562Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:55:48.031087Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:55:59.574199Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:56:13.699530Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:56:24.129664Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:56:32.396835Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:56:42.785439Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:56:50.921519Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:57:03.312548Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:57:11.568055Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:57:22.276249Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:57:31.181145Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:57:40.690044Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:57:49.003643Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:57:59.093380Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:58:06.514809Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:58:15.993508Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:58:23.237983Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:58:25.192114Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received request to perform action 'FlushMemory'.
+[2m2025-09-17T01:58:29.448395Z[0m [32m INFO[0m [2mmodelardbd::storage::compressed_data_manager[0m[2m:[0m Flushing the remaining 1 compressed data buffers.
+[2m2025-09-17T01:58:29.764963Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received SQL: 'SELECT * FROM powerlog LIMIT 1;'.
+[2m2025-09-17T01:58:29.765036Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Executing SQL: 'SELECT * FROM powerlog LIMIT 1;'.
+[2m2025-09-17T01:58:29.784669Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Received SQL: 'SELECT COUNT(timestamp) FROM powerlog WHERE frequency <> 999.0 AND frequency <> -999.0'.
+[2m2025-09-17T01:58:29.784773Z[0m [32m INFO[0m [2mmodelardbd::remote[0m[2m:[0m Executing SQL: 'SELECT COUNT(timestamp) FROM powerlog WHERE frequency <> 999.0 AND frequency <> -999.0'.

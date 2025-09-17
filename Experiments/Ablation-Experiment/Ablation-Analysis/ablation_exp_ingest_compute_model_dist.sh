@@ -3,7 +3,7 @@
 # exit on fail
 set -e
 
-error_bounds="0 0.01 0.1 1 5 10"
+error_bounds="0.01 0.1 1 5 10"
 
 datasets="powerlog"
 
